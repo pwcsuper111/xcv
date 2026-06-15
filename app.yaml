@@ -1,0 +1,6 @@
+name: onedrive-update
+services:
+- name: web
+  environment_slug: php
+  run_command: heroku-php-apache2 .
+  http_port: 8080
