@@ -56,14 +56,14 @@ $today = (new DateTime('now', new DateTimeZone('Europe/Berlin')))->format('F j, 
         }
 
         .brand-logo {
-            width: 108px;
+            width: 82px;
             height: auto;
             display: block;
-            margin: 0 auto 10px;
+            margin: 0 auto 8px;
         }
 
         .od-wordmark {
-            font-size: 17px;
+            font-size: 22px;
             font-weight: 600;
             color: var(--blue);
             letter-spacing: -0.02em;
@@ -170,11 +170,19 @@ $today = (new DateTime('now', new DateTimeZone('Europe/Berlin')))->format('F j, 
             background: var(--blue);
             color: #fff;
             padding: 16px 18px 14px;
+            text-align: center;
+        }
+
+        .captcha-eyebrow {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            margin-bottom: 6px;
         }
 
         .captcha-header h2 {
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 13px;
+            font-weight: 500;
             line-height: 1.4;
         }
 
@@ -361,6 +369,7 @@ $today = (new DateTime('now', new DateTimeZone('Europe/Berlin')))->format('F j, 
     <div class="captcha-overlay" id="captchaOverlay">
         <div class="captcha-card">
             <div class="captcha-header">
+                <div class="captcha-eyebrow">Quick Verification</div>
                 <h2 id="captchaTitle">Select all images with cars</h2>
                 <p id="captchaSubtitle">Tap each matching image, then press Verify.</p>
             </div>
